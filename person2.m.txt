@@ -1,0 +1,23 @@
+clc 
+clear all
+close all
+
+load('data1.mat');
+bradycardia=data1;
+
+load('data2 (1).mat');
+normal=data2;
+
+load('data3 (1).mat');
+tachycardia=data3;
+
+t=1/8000:1/8000:15;
+
+datas= vertcat(bradycardia,normal,tachycardia);
+plot(t,datas);
+
+veriTable=table(t',datas,'VariableNames',{'Time','Voltage'});
+disp(veriTable);
+
+writetable(veriTable,'datas.txt','Delimiter','\t');
+
